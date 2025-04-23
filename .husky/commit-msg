@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+COMMIT_TYPES="init|feat|fix|docs|style|design|test|refactor|build|ci|perf|chore|rename|remove|init"
+COMMIT_MESSAGE_FILE=$1
+COMMIT_MESSAGE=$(cat "$COMMIT_MESSAGE_FILE")
+MESSAGE_REGEX="(^($COMMIT_TYPES)(\(.+\))?: .+)|^($COMMIT_TYPES)(\(.+\))?$"
+
+if ! echo "$COMMIT_MESSAGE" | grep -qE "$MESSAGE_REGEX"; then
+  echo "┌─────────────────────────────────────────────────────────────────────────────────────"
+  echo "│ feat      │ 새로운 기능 추가"
+  echo "│ fix       │ 버그 수정"
+  echo "│ docs      │ 문서 수정"
+  echo "│ style     │ 코드 스타일 변경 (코드 포매팅, 세미콜론 누락 등) 기능 수정이 없는 경우"
+  echo "│ design    │ 사용자 UI 디자인 변경 (CSS 등)"
+  echo "│ test      │ 테스트 코드, 리팩토링 테스트 코드 추가"
+  echo "│ refactor  │ 코드 리팩토링"
+  echo "│ build     │ 빌드 파일 수정"
+  echo "│ ci        │ CI 설정 파일 수정"
+  echo "│ perf      │ 성능 개선"
+  echo "│ chore     │ 빌드 업무 수정, 패키지 매니저 수정 (gitignore 수정 등)"
+  echo "│ rename    │ 파일 혹은 폴더명을 수정만 한 경우"
+  echo "│ remove    │ 파일을 삭제만 한 경우"
+  echo "└─────────────────────────────────────────────────────────────────────────────────────"
+  echo "커밋 메시지 포멧을 맞춰 작성해주세요."
+  echo "ex1) type: title"
+  echo "ex2) type(file): title"
+  echo "ex3) type"
+  exit 1
+fi
