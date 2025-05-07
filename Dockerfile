@@ -10,6 +10,7 @@ RUN npm install -g pnpm \
 FROM node:23-slim
 
 WORKDIR /app
+RUN npm install -g pnpm
 COPY --from=builder /app ./
 
 EXPOSE 3000
