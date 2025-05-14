@@ -1,7 +1,7 @@
-name: Feature request
-about: Feature request
+name: "Feature request"
+about: "Feature request"
 title: "[Feature] "
-labels: enhancement
+labels: "enhancement"
 assignees: []
 
 body:
