@@ -27,3 +27,11 @@ body:
       render: bash
     validations:
       required: false
+      
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "추가 정보"
+      description: "스크린샷, 로그, 참고할 링크 등을 제공해주세요."
+    validations:
+      required: false
