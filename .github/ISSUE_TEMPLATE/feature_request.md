@@ -1,8 +1,10 @@
+---
 name: "Feature request"
 about: "Feature request"
 title: "[Feature] "
 labels: "enhancement"
 assignees: []
+---
 
 body:
   - type: textarea
