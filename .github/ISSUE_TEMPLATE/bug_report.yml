@@ -1,0 +1,35 @@
+name: "Bug report"
+description: "Bug report"
+title: "[Bug] "
+labels: "bug"
+assignees: []
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 설명
+      description: "버그에 대한 상세 설명을 작성하세요."
+      placeholder: "어떤 버그가 발생하였나요?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: "재현 방법 (Bug Report 경우 필수)"
+      description: "버그를 재현할 수 있는 단계를 작성해주세요."
+      placeholder: |
+        1. 어떤 환경에서 실행했나요?
+        2. 어떤 동작을 수행했나요?
+        3. 예상한 결과와 실제 결과는 무엇인가요?
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: "추가 정보"
+      description: "스크린샷, 로그, 참고할 링크 등을 제공해주세요."
+    validations:
+      required: false
