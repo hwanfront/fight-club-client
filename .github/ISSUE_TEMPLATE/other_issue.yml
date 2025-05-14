@@ -1,0 +1,16 @@
+name: "Other issue"
+description: "Other issue"
+title: "[] "
+labels: []
+assignees: []
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: 설명
+      description: "이슈에 대한 상세 설명을 작성하세요."
+      placeholder: "이슈에 대한 상세 설명을 작성하세요."
+    validations:
+      required: true
+  
