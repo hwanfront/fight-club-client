@@ -20,9 +20,9 @@ body:
       label: 기능 목록
       description: "기능 목록을 작성하세요."
       value: |
-        [ ] 
-        [ ] 
-        [ ]
+        - [ ] 
+        - [ ] 
+        - [ ]
         ...
       render: bash
     validations:
