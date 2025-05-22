@@ -26,6 +26,7 @@
       "@/config/*": ["config/*"],
       "@/hooks/*": ["hooks/*"],
       "@/lib/*": ["lib/*"],
+      "@/mocks/*": ["mocks/*"],
       "@/store/*": ["store/*"],
       "@/types/*": ["types/*"]
     }
