@@ -1,3 +1,4 @@
-import { testHandlers } from './test'
+import { authHandlers } from './auth'
+import { userHandlers } from './user'
 
-export const handlers = [...testHandlers]
+export const handlers = [...authHandlers, ...userHandlers]
