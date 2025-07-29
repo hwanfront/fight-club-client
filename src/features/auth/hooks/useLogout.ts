@@ -1,16 +1,17 @@
-import { useUserStore } from 'app/store/userStore'
+import { apiFetch } from '@/lib/api'
+import { useUserStore } from '@/store/userStore'
 import { useRouter } from 'next/navigation'
 
 export const useLogout = () => {
-  const setUsername = useUserStore(state => state.setUsername)
+  const logoutUser = useUserStore(state => state.logout)
   const router = useRouter()
 
   const logout = async () => {
-    await fetch('/api/auth/logout', {
+    await apiFetch('/api/auth/logout', {
       method: 'POST',
     })
 
-    setUsername(null)
+    logoutUser()
 
     router.push('/')
   }
