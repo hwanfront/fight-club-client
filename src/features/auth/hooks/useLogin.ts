@@ -1,27 +1,44 @@
-import { useUserStore } from 'app/store/userStore'
+import { apiFetch } from '@/lib/api'
+import { useUserStore } from '@/store/userStore'
+import { ApiResponseError } from '@/types/ApiResponse'
 import { useRouter } from 'next/navigation'
 
 export const useLogin = (redirectTo: string = '/') => {
-  const setUsername = useUserStore(state => state.setUsername)
+  const loginToStore = useUserStore(state => state.login)
   const router = useRouter()
 
   const login = async (email: string, password: string) => {
-    const res = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    })
+    try {
+      const loginResponse = await apiFetch(`/api/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include',
+      })
 
-    if (!res.ok) {
-      throw new Error('로그인 실패')
+      if (!loginResponse.ok) {
+        const responseData = await loginResponse.json()
+        throw new ApiResponseError(responseData.message || '로그인 실패')
+      }
+
+      const meResponse = await apiFetch(`/api/users/me`, {
+        credentials: 'include',
+      })
+
+      if (meResponse.ok) {
+        const result = await meResponse.json()
+        loginToStore({
+          username: result.data.username,
+          email: result.data.email,
+        })
+      }
+
+      router.push(redirectTo)
+    } catch (error) {
+      throw error
     }
-
-    const user = await res.json()
-    setUsername(user.nickname)
-
-    router.push(redirectTo)
   }
 
   return { login }

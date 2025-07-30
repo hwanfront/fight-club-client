@@ -4,48 +4,51 @@ import { FormEvent, useState } from 'react'
 import { useLogin } from '../hooks/useLogin'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { useUserStore } from 'app/store/userStore'
+import { ApiResponseError } from '@/types/ApiResponse'
+import Link from 'next/link'
 
 export const LoginForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const { login } = useLogin('/')
-
-  const { username } = useUserStore()
+  const { login } = useLogin()
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setError('')
 
     try {
-      const res = await login(email, password)
-      console.log(res)
+      await login(email, password)
     } catch (error) {
-      console.log(error)
-      setError('로그인 실패')
+      if (error instanceof ApiResponseError) {
+        setError(error.message)
+      }
     }
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 w-[300px]">
+    <form onSubmit={handleSubmit} className="space-y-3">
       <Input
         type="email"
         placeholder="이메일"
         value={email}
         onChange={e => setEmail(e.target.value)}
+        required
       />
       <Input
         type="password"
         placeholder="비밀번호"
         value={password}
         onChange={e => setPassword(e.target.value)}
+        required
       />
-      {error && <p className="text-red-500 text-sm">{error}</p>}
+      {error && <p className="text-sm text-red-500">{error}</p>}
       <Button type="submit" className="w-full">
         로그인
       </Button>
-      <p className="text-black-500 text-m">{username ?? 'null'}</p>
+      <Button variant="outline" className="w-full" asChild>
+        <Link href="register">회원가입</Link>
+      </Button>
     </form>
   )
 }

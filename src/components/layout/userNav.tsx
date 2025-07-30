@@ -1,0 +1,47 @@
+'use client'
+
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { useLogout } from '@/features/auth/hooks/useLogout'
+import { User } from '@/features/auth/types/auth'
+import { useUserStore } from '@/store/userStore'
+
+type UserNavProps = {
+  initialUser: User | null
+}
+
+export function UserNav({ initialUser }: UserNavProps) {
+  const { isLoggedIn, user, isLoading } = useUserStore()
+  const { logout } = useLogout()
+
+  const renderLoggedInUI = (username: string) => (
+    <div className="flex items-center gap-4">
+      <span className="hidden text-sm font-medium sm:block">
+        Welcome, {username}
+      </span>
+      <Button onClick={logout} size="sm">
+        로그아웃
+      </Button>
+    </div>
+  )
+
+  const renderLoggedOutUI = () => (
+    <Button asChild size="sm">
+      <Link href="/login">로그인</Link>
+    </Button>
+  )
+
+  // Hydration 이전 (스토어가 아직 로딩 중)
+  if (isLoading) {
+    return initialUser
+      ? renderLoggedInUI(initialUser.username)
+      : renderLoggedOutUI()
+  }
+
+  // Hydration 이후
+  if (isLoggedIn && user) {
+    return renderLoggedInUI(user.username)
+  }
+
+  return renderLoggedOutUI()
+}
