@@ -43,7 +43,7 @@ export const authHandlers = [
   ),
 
   http.post('/api/auth/logout', () => {
-    return responseHandler(() => {
+    const response = responseHandler(() => {
       mockUserStore.logout()
       return {
         status: 200,
@@ -51,6 +51,10 @@ export const authHandlers = [
         message: '로그아웃 성공',
       }
     })
+
+    response.headers.delete('Set-Cookie')
+
+    return response
   }),
 
   http.post<never, RefreshRequest, ApiResponseBody<RefreshResponse>>(

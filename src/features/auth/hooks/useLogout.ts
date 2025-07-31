@@ -7,13 +7,16 @@ export const useLogout = () => {
   const router = useRouter()
 
   const logout = async () => {
-    await apiFetch('/api/auth/logout', {
-      method: 'POST',
-    })
-
-    logoutUser()
-
-    router.push('/')
+    try {
+      await apiFetch('/api/auth/logout', {
+        method: 'POST',
+      })
+    } catch (error) {
+      console.error('Login Error:', error)
+    } finally {
+      logoutUser()
+      router.push('/')
+    }
   }
 
   return { logout }
