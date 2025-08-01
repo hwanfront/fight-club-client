@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { Button } from '@/components/ui/shadcn/button'
 import { useLogout } from '@/features/auth/hooks/useLogout'
 import { User } from '@/features/auth/types/auth'
 import { useUserStore } from '@/store/userStore'
