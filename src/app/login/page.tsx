@@ -1,14 +1,13 @@
-import { Button } from '@/components/ui/button'
+import { OAuthLoginIconButtons } from '@/components/layout/OAuthLoginIconButtons'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Separator } from '@/components/ui/separator'
+} from '@/components/ui/shadcn/card'
+import { DividerWithText } from '@/components/ui/dividerWithText'
 import { LoginForm } from '@/features/auth/components/loginForm'
-import Link from 'next/link'
 import React from 'react'
 
 export default function LoginPage() {
@@ -21,29 +20,9 @@ export default function LoginPage() {
         </CardHeader>
         <CardContent className="space-y-2">
           <LoginForm />
-
-          <Separator className="my-4" />
-          <Button className="w-full" asChild>
-            <Link
-              href={`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/oauth2/authorization/google`}
-            >
-              Google로 로그인
-            </Link>
-          </Button>
-          <Button className="w-full" asChild>
-            <Link
-              href={`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/oauth2/authorization/naver`}
-            >
-              Naver로 로그인
-            </Link>
-          </Button>
-          <Button className="w-full" asChild>
-            <Link
-              href={`${process.env.NEXT_PUBLIC_BACKEND_API_URL}/oauth2/authorization/kakao`}
-            >
-              Kakao로 로그인
-            </Link>
-          </Button>
+          <DividerWithText text="간편 로그인" />
+          {/* <OAuthLoginButtons /> */}
+          <OAuthLoginIconButtons />
         </CardContent>
       </Card>
     </div>

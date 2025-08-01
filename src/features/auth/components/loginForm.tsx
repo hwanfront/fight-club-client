@@ -2,8 +2,8 @@
 
 import { FormEvent, useState } from 'react'
 import { useLogin } from '../hooks/useLogin'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/shadcn/input'
+import { Button } from '@/components/ui/shadcn/button'
 import { ApiResponseError } from '@/types/ApiResponse'
 import Link from 'next/link'
 
