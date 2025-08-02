@@ -1,10 +1,12 @@
+import { OAuthLoginIconButtons } from '@/components/layout/OAuthLoginIconButtons'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from '@/components/ui/shadcn/card'
+import { DividerWithText } from '@/components/ui/dividerWithText'
 import { LoginForm } from '@/features/auth/components/loginForm'
 import React from 'react'
 
@@ -16,8 +18,11 @@ export default function LoginPage() {
           <CardTitle>Fight Club</CardTitle>
           <CardDescription>로그인하여 파이트 클럽에 참여하세요</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="space-y-2">
           <LoginForm />
+          <DividerWithText text="간편 로그인" />
+          {/* <OAuthLoginButtons /> */}
+          <OAuthLoginIconButtons />
         </CardContent>
       </Card>
     </div>
