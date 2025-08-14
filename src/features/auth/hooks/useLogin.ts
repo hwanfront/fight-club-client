@@ -31,7 +31,9 @@ export const useLogin = (redirectTo: string = '/') => {
         const result = await meResponse.json()
         loginToStore({
           username: result.data.username,
+          nickname: result.data.nickname,
           email: result.data.email,
+          profileImageUrl: result.data.profileImageUrl,
         })
       }
 
