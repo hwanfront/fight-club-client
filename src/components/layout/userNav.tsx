@@ -6,6 +6,7 @@ import { useLogout } from '@/features/auth/hooks/useLogout'
 import { User } from '@/features/auth/types/auth'
 import { useUserStore } from '@/store/userStore'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/shadcn/avatar'
+import { SvgIcon } from '../icon/SvgIcon'
 
 type UserNavProps = {
   initialUser: User | null
@@ -15,14 +16,25 @@ export function UserNav({ initialUser }: UserNavProps) {
   const { isLoggedIn, user, isLoading } = useUserStore()
   const { logout } = useLogout()
 
-  const renderLoggedInUI = (username: string, profileImageUrl: string) => (
+  const renderLoggedInUI = (
+    username: string,
+    profileImageUrl: string | null
+  ) => (
     <div className="flex items-center gap-4">
       <span className="hidden text-sm font-medium sm:block">
         Welcome, {username}
       </span>
       <Avatar>
-        <AvatarImage src={profileImageUrl} />
-        <AvatarFallback>{username}</AvatarFallback>
+        {profileImageUrl && (
+          <AvatarImage src={profileImageUrl} alt={username} />
+        )}
+        <AvatarFallback>
+          {profileImageUrl ? (
+            username
+          ) : (
+            <SvgIcon name="lucide-user" className="w-8 h-8 text-gray-400" />
+          )}
+        </AvatarFallback>
       </Avatar>
       <Button onClick={logout} size="sm">
         로그아웃

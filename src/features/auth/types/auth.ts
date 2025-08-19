@@ -2,7 +2,7 @@ export type User = {
   email: string
   username: string
   nickname: string
-  profileImageUrl: string
+  profileImageUrl: string | null
 }
 
 export interface LoginRequest {
@@ -20,6 +20,7 @@ export interface SignupRequest {
   password: string
   nickname: string
   username: string
+  profileImageUrl: string | null
 }
 
 export interface RefreshRequest {
@@ -35,5 +36,5 @@ export interface MeResponse {
   email: string
   username: string
   nickname: string
-  profileImageUrl: string
+  profileImageUrl: string | null
 }
