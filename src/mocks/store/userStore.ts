@@ -6,7 +6,11 @@ import {
   MeResponse,
   SignupRequest,
 } from '@/features/auth/types/auth'
-import { createMockUser, createUser } from '../faker/user'
+import {
+  createMockUser,
+  createUserWithProfileImage,
+  createUser,
+} from '../faker/user'
 import { InvalidPasswordError } from '../errors/InvalidPasswordError'
 import { UserNotFoundError } from '../errors/UserNotFoundError'
 import { UnauthorizedError } from '../errors/UnauthorizedError'
@@ -28,6 +32,16 @@ users.push(
     password: '1234',
     nickname: 'test',
     username: 'test',
+    profileImageUrl: null,
+  })
+)
+
+users.push(
+  createUserWithProfileImage({
+    email: 'test1@gmail.com',
+    password: '1234',
+    nickname: 'test1',
+    username: 'test1',
   })
 )
 initialize()
@@ -61,7 +75,13 @@ export const mockUserStore = {
       throw new UserAlreadyExistsError()
     }
 
-    const user = createUser({ email, password, nickname, username })
+    const user = createUser({
+      email,
+      password,
+      nickname,
+      username,
+      profileImageUrl: null,
+    })
     users.push(user)
   },
   refresh({ refreshToken }: RefreshRequest): RefreshResponse {
@@ -83,10 +103,9 @@ export const mockUserStore = {
       throw new UnauthorizedError()
     }
 
-    const { email, username, nickname, providerId, provider, role } =
-      currentUser
+    const { email, username, nickname, profileImageUrl } = currentUser
 
-    return { email, username, nickname, providerId, provider, role }
+    return { email, username, nickname, profileImageUrl }
   },
   logout() {
     currentUser = null
