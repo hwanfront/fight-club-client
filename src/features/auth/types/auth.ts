@@ -1,4 +1,9 @@
-export type User = { username: string; email: string }
+export type User = {
+  email: string
+  username: string
+  nickname: string
+  profileImageUrl: string | null
+}
 
 export interface LoginRequest {
   email: string
@@ -15,15 +20,7 @@ export interface SignupRequest {
   password: string
   nickname: string
   username: string
-}
-
-export interface MeResponse {
-  email: string
-  username: string
-  nickname: string
-  providerId: string | null
-  provider: string | null
-  role: string
+  profileImageUrl: string | null
 }
 
 export interface RefreshRequest {
@@ -33,4 +30,11 @@ export interface RefreshRequest {
 export interface RefreshResponse {
   accessToken: string
   refreshToken: string
+}
+
+export interface MeResponse {
+  email: string
+  username: string
+  nickname: string
+  profileImageUrl: string | null
 }

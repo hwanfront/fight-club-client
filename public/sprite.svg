@@ -5,7 +5,8 @@
     <path fill="#fbbc05" d="M13,19.71a5.32,5.32,0,0,1,0-3.42V14H10A9,9,0,0,0,10,22l3-2.33Z"/>
     <path fill="#ea4335" d="M18,12.58a4.86,4.86,0,0,1,3.44,1.35L24,11.34A8.65,8.65,0,0,0,18,9a9,9,0,0,0-8,5l3,2.33a5.36,5.36,0,0,1,5-3.71Z" />
   </symbol>
-  
+
+  <!-- oAuth-Buttons -->
   <symbol id="kakao" viewBox="-75 -90 350 350">
     <polygon fill="#3c1e1e" points="45 140 40 185 90 150 45 140"/>
     <ellipse fill="#3c1e1e" cx="100" cy="80" rx="100" ry="80"/>
@@ -13,5 +14,16 @@
   
   <symbol id="naver" viewBox="0 0 200 200">
     <polygon fill="#eeeeee" points="115.9,145.8 83.7,98.4 83.7,145.8 50,145.8 50,54.3 84.2,54.3 116.4,101.6 116.4,54.3 150,54.3 150,145.8 115.9,145.8"/>
+  </symbol>
+
+  <symbol id="user" viewBox="0 0 24 24" fill="none">
+    <path d="M10.1465 7.14648C11.1702 6.1228 12.8298 6.1228 13.8535 7.14648C14.8772 8.17017 14.8772 9.82983 13.8535 10.8535C12.8298 11.8772 11.1702 11.8772 10.1465 10.8535C9.1228 9.82983 9.1228 8.17017 10.1465 7.14648Z" stroke="currentColor" stroke-linecap="round"/>
+    <path d="M7.24362 17.2691L7.05497 17.8351C7.02793 17.9162 7.08831 18 7.17382 18H16.8262C16.9117 18 16.9721 17.9162 16.945 17.8351L16.7564 17.2691C16.278 15.8339 15.177 14.6914 13.7604 14.1602C12.6254 13.7345 11.3746 13.7345 10.2396 14.1602C8.823 14.6914 7.72205 15.8339 7.24362 17.2691Z" stroke="currentColor" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- Lucide -->
+  <symbol id="lucide-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-icon lucide-user-round">
+    <circle cx="12" cy="8" r="5"/>
+    <path d="M20 21a8 8 0 0 0-16 0"/>
   </symbol>
 </svg>

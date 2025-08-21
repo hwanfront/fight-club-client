@@ -34,3 +34,10 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## License
+
+이 프로젝트는 다양한 오픈소스 라이선스를 따릅니다. 자세한 내용은 `LICENSE` 파일을 참조하세요.
+
+- **oAuth-Buttons**: 프로젝트의 SVG 소셜 로그인 아이콘은 [oAuth-Buttons](https://github.com/oAuth-Buttons/oAuth-Buttons) 저장소에서 가져왔으며, 이는 **MIT 라이선스**를 따릅니다.
+- **Lucide Icons**: 프로젝트에 사용된 기타 SVG 아이콘은 [Lucide](https://lucide.dev/)에서 가져왔으며, 이는 **ISC 라이선스**를 따릅니다.
