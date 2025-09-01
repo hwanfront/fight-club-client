@@ -21,6 +21,9 @@ export function UserNav({ initialUser }: UserNavProps) {
     profileImageUrl: string | null
   ) => (
     <div className="flex items-center gap-4">
+      <Button asChild variant="ghost" size="sm">
+        <Link href="/matching-wait">매칭 대기</Link>
+      </Button>
       <span className="hidden text-sm font-medium sm:block">
         Welcome, {username}
       </span>
